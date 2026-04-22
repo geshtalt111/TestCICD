@@ -1,0 +1,38 @@
+
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Setup NuGet for GitHub Packages
+        run: |
+          dotnet nuget add source "https://nuget.pkg.github.com/geshtalt111/index.json" \
+          --name github \
+          --username geshtalt111 \
+          --password ${{ secrets.GITHUB_TOKEN }} \
+          --store-password-in-clear-text
+
+      - name: Restore dependencies
+        run: dotnet restore ./TestCICD/TestCICD.csproj
+
+      - name: Build
+        run: dotnet build ./TestCICD/TestCICD.csproj --no-restore --configuration Release
+
+      - name: Run tests
+        run: dotnet test ./TestCICD/TestCICD.csproj --no-build --configuration Release

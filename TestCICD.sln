@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCICD", "TestCICD\TestCICD.csproj", "{D9BC5FCD-3EBB-4F85-B9C4-99B40F510E52}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9BC5FCD-3EBB-4F85-B9C4-99B40F510E52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9BC5FCD-3EBB-4F85-B9C4-99B40F510E52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9BC5FCD-3EBB-4F85-B9C4-99B40F510E52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9BC5FCD-3EBB-4F85-B9C4-99B40F510E52}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
