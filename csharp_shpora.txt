@@ -1,0 +1,32 @@
+using System;
+
+class Program
+{
+    // Первый класс с методами
+    class Calculator
+    {
+        public int Add(int a, int b)
+        {
+            return a + b;
+        }
+
+        public int Multiply(int a, int b)
+        {
+            return a * b;
+        }
+    }
+
+    // Main всегда внизу
+    static void Main(string[] args)
+    {
+        Calculator calc = new Calculator();
+
+        int sum = calc.Add(5, 3);
+        int mult = calc.Multiply(4, 2);
+
+        Console.WriteLine("Сумма: " + sum);
+        Console.WriteLine("Умножение: " + mult);
+
+        Console.ReadKey();
+    }
+}
