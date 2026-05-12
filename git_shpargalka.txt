@@ -1,0 +1,267 @@
+
+ШПАРГАЛКА ПО GIT, VISUAL STUDIO, TESTING И CI/CD
+
+========================================
+1. СОЗДАНИЕ GIT-РЕПОЗИТОРИЯ
+========================================
+
+Перейти в папку проекта:
+cd путь_к_проекту
+
+Создать git-репозиторий:
+git init
+
+Проверить состояние:
+git status
+
+Настроить имя:
+git config --global user.name "Ваше Имя"
+
+Настроить email:
+git config --global user.email "you@example.com"
+
+Проверить настройки:
+git config --list
+
+========================================
+2. ДОБАВЛЕНИЕ ФАЙЛОВ И КОММИТЫ
+========================================
+
+Добавить один файл:
+git add Program.cs
+
+Добавить все файлы:
+git add .
+
+Создать коммит:
+git commit -m "Описание изменений"
+
+Посмотреть историю:
+git log
+
+Краткая история:
+git log --oneline
+
+========================================
+3. РАБОТА С ВЕТКАМИ
+========================================
+
+Посмотреть ветки:
+git branch
+
+Создать ветку:
+git branch feature-login
+
+Перейти в ветку:
+git switch feature-login
+
+Создать и перейти:
+git switch -c feature-login
+
+Слить ветку:
+git merge feature-login
+
+Удалить ветку:
+git branch -d feature-login
+
+Принудительное удаление:
+git branch -D feature-login
+
+========================================
+4. УДАЛЕННЫЙ РЕПОЗИТОРИЙ
+========================================
+
+Подключить удаленный репозиторий:
+git remote add origin https://github.com/user/repository.git
+
+Проверить remote:
+git remote -v
+
+Переименовать ветку в main:
+git branch -M main
+
+Отправить проект:
+git push -u origin main
+
+Получить изменения:
+git pull
+
+Скачать изменения:
+git fetch
+
+Клонировать репозиторий:
+git clone https://github.com/user/repository.git
+
+========================================
+5. GIT LOG И ГРАФ ИСТОРИИ
+========================================
+
+Полный граф:
+git log --graph --oneline --decorate --all
+
+========================================
+6. ВОССТАНОВЛЕНИЕ ФАЙЛОВ
+========================================
+
+Посмотреть историю:
+git log --oneline
+
+Восстановить файл:
+git restore --source hash_коммита Program.cs
+
+Старый вариант:
+git checkout hash_коммита -- Program.cs
+
+========================================
+7. GIT REBASE
+========================================
+
+Перенести коммиты поверх main:
+git rebase main
+
+Продолжить после конфликта:
+git rebase --continue
+
+Отменить rebase:
+git rebase --abort
+
+Перенос части коммитов:
+git rebase --onto main C new-feature
+
+========================================
+8. GIT CHERRY-PICK
+========================================
+
+Скопировать коммит:
+git cherry-pick abc1234
+
+Скопировать несколько:
+git cherry-pick abc1234 def5678
+
+Продолжить после конфликта:
+git cherry-pick --continue
+
+Отменить:
+git cherry-pick --abort
+
+========================================
+9. VISUAL STUDIO И .NET
+========================================
+
+Создать solution:
+dotnet new sln -n MySolution
+
+Создать проект:
+dotnet new console -n MyApp
+
+Добавить проект в solution:
+dotnet sln add MyApp/MyApp.csproj
+
+Собрать проект:
+dotnet build
+
+Запустить проект:
+dotnet run
+
+Восстановить зависимости:
+dotnet restore
+
+========================================
+10. СОЗДАНИЕ ТЕСТОВ
+========================================
+
+Создать MSTest проект:
+dotnet new mstest -n MyApp.Tests
+
+Добавить тестовый проект:
+dotnet sln add MyApp.Tests/MyApp.Tests.csproj
+
+Связать проекты:
+dotnet add MyApp.Tests/MyApp.Tests.csproj reference MyApp/MyApp.csproj
+
+Запустить тесты:
+dotnet test
+
+========================================
+11. ОТЛАДКА В VISUAL STUDIO
+========================================
+
+F5 — запуск с отладкой
+Ctrl + F5 — запуск без отладки
+F10 — шаг с обходом
+F11 — шаг внутрь метода
+Shift + F11 — выход из метода
+Shift + F5 — остановить отладку
+
+========================================
+12. DEBUG И TRACE
+========================================
+
+Подключение:
+using System.Diagnostics;
+
+Вывод в окно отладки:
+Debug.WriteLine("Сообщение");
+
+Вывод по условию:
+Debug.WriteLineIf(x > 5, "x больше 5");
+
+Проверка условия:
+Debug.Assert(x > 0, "Ошибка");
+
+Остановка отладчика:
+Debugger.Break();
+
+========================================
+13. TRACE В КОНСОЛЬ И ФАЙЛ
+========================================
+
+Вывод в консоль:
+Trace.Listeners.Add(new ConsoleTraceListener());
+
+Вывод в файл:
+TextWriterTraceListener fileListener =
+    new TextWriterTraceListener("log.txt");
+
+Trace.Listeners.Add(fileListener);
+
+Trace.WriteLine("Сообщение");
+Trace.Flush();
+
+========================================
+14. CI/CD И GITHUB ACTIONS
+========================================
+
+Путь workflow:
+.github/workflows/ci.yml
+
+Основные команды:
+dotnet restore
+dotnet build
+dotnet test
+
+Пример отправки workflow:
+git add .
+git commit -m "Добавлен CI/CD"
+git push
+
+========================================
+15. САМЫЕ ВАЖНЫЕ КОМАНДЫ
+========================================
+
+git init
+git status
+git add .
+git commit -m "..."
+git branch
+git switch -c branch_name
+git merge branch_name
+git rebase main
+git cherry-pick hash
+git push
+git pull
+git clone URL
+git log --graph --oneline --all
+dotnet build
+dotnet run
+dotnet test
